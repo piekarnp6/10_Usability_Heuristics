@@ -1,0 +1,229 @@
+/* --- Global Styles --- */
+body {
+    font-weight: normal;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main, header, footer {
+    background-color: #dddddd;
+    flex: 1;
+    padding-left: 11%;
+    padding-right: 11%;
+}
+
+footer {
+    padding: 5em 0 3em 0;
+    text-align: center;
+    color: #595959;
+}
+
+header {
+    padding-top: 8vh;
+}
+
+section {
+    padding: 1em 0vw 0 0vw;
+}
+
+#prim {
+    text-align: center;
+}
+
+.en {
+    /*color: #a700a7;*/
+    color: rgb(74, 149, 124);
+    font-style: italic;
+}
+
+.en_h {
+    font-size: 120%;
+    color: rgb(74, 149, 124);
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* --- Animations etc. --- */
+
+@keyframes highlight-fade {
+  0% {
+    background-color: #bfbfbf; 
+    box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+:target {
+    animation: highlight-fade 3s ease-out; 
+    border-radius: 10px;
+    padding: 10px;
+}
+
+[id] {
+    scroll-margin-top: 60px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; 
+  }
+}
+
+
+/* --- Navigation & Menu Toggle (Mobile First) --- */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-size: 24px;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+nav {
+    background-color: #999;
+    position: fixed;
+    top: 0;
+    left: -100%; 
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    overflow-y: auto;
+    text-align: center;
+}
+
+nav h2 {
+    margin: 0;
+    padding: 0;
+}
+
+nav.active {
+    left: 0;
+}
+
+nav.collapsed {
+    display: none;
+    width: 0%;
+    padding: 0;
+}
+
+/* --- Nav --- */
+nav ul {
+    padding: 0; 
+    margin-top: 2vh;
+    width: 100%;
+}
+
+nav ul li {
+    list-style-type: none;
+    margin-bottom: 1vh;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: aquamarine; 
+    display: block; 
+    padding: 0.2vw;
+    margin: 0 2vw 0 2vw;
+    transition: 0.5s;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    border-radius: 10px;
+}
+
+nav ul li a:hover {
+    background-color: aquamarine; 
+    color: black; 
+}
+
+nav ul li a:focus {
+    background-color: aquamarine; 
+    color: black; 
+}
+
+section figure{
+    margin: 2vh 0 2vh 0;
+}
+
+section img{
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#h5_2{
+    width: 240px;
+}
+
+figure figcaption{
+    padding: 1em;
+    text-align: center;
+    font-style: italic;
+    font-size: 90%;
+}
+
+/* --- Desktop Layout --- */
+@media (min-width: 992px) and (min-height: 680px) {
+    .menu-toggle {
+        display: none; 
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: 18vw 1fr;
+        
+        grid-template-areas: 
+            "nav header"
+            "nav main"
+            "nav footer";
+    }
+
+    nav {
+        grid-area: nav;
+        position: sticky;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100vh;
+        padding: 0;
+    }
+
+    nav ul li a {
+        margin: 0;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    header { grid-area: header; }
+    main   { grid-area: main; }
+    footer { grid-area: footer; }
+
+    main, header, footer {
+        padding-left: 4vw; 
+        padding-right: 22vw;
+    }
+
+    section img{
+    width: 380px;
+}
+}
